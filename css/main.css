@@ -130,8 +130,9 @@ a:visited { color: #a0a; }
 /* standard */
 .post pre {
   border: 1px solid #ddd;
-  background-color: #eef;
+  background-color: #eee;
   padding: 0 .4em;
+  overflow: scroll;
 }
 
 .post ul, .post ol {
@@ -146,7 +147,6 @@ a:visited { color: #a0a; }
 
 .post pre code {
   border: none;
-  overflow: scroll;
 }
 
 /* terminal */
