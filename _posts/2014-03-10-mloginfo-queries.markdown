@@ -2,7 +2,7 @@
 layout: post
 title: Query Aggregation with mloginfo
 date: 2014-03-20 00:12:02
-categories: mtools mloginfo queries aggregation optimize indexes
+categories: mtools
 ---
 
 With the release of mtools 1.1.4, `mloginfo` will receive a new section to aggregate queries in a log file or system.profile collection. The section can be invoked with the `--queries` argument. It will aggregate all queries (including the query part of updates), grouped by the query pattern. 
