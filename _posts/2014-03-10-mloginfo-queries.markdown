@@ -5,7 +5,7 @@ date: 2014-03-20 00:12:02
 categories: mtools
 ---
 
-With the release of mtools 1.1.4, `mloginfo` will receive a new section to aggregate queries in a log file or system.profile collection. The section can be invoked with the `--queries` argument. It will aggregate all queries (including the query part of updates), grouped by the query pattern. 
+With the release of mtools 1.1.4, _mloginfo_ receives a new section to aggregate queries in a log file or system.profile collection. The section can be invoked with the `--queries` argument. It aggregates all queries (including the query part of updates), grouped by the query pattern. 
 
 The section shows a table with namespace (in usual `database.collection` syntax), the query pattern, and various statistics, like how often this query pattern was found (count), the minimum and maximum execution time, the mean and the total sum. The list is sorted by total sum (last column), as that reflects the overall work the database has to perform for each query pattern. 
 
@@ -37,6 +37,8 @@ serverside.auth_sessions     {"session_endtime": 1, "session_userid": 1}        
 serverside.game_level        {"_id": 1}                                         1         104         104          104         104
 ```
 
-Other sections that `mloginfo` supports are `--distinct`, `--connections`, `--restarts`. More information and usage examples are available on the [mtools wiki](https://github.com/rueckstiess/mtools/wiki/mloginfo).
+A few comments about the query pattern: Ideally, _mloginfo_ would use exactly the same process of grouping the queries as MongoDB's query optimizer and plan cache does. However, that is a quite complex process, and imitating it would be a lot of work and may still not match in every case. Instead, the query pattern recognizer in mtools takes a simple and predictable approach. It removes all the values and replaces them with a 1 (like indexes are defined). It also reduces `$` operators like `$in`, `$gt`, `$exists` as those are usually handled efficiently with the appropriate index. Operators like `$ne`, `$nin` remain, because they can't be efficiently answered with an index. This does not cover every single case, for example `{$exists: false}` is one of the operators that should probably remain in the pattern, but it works well for most queries.
+
+More information and usage examples for _mloginfo_ (including the other section types `--distinct`, `--connections`, `--restarts`) are available on the [mtools wiki](https://github.com/rueckstiess/mtools/wiki/mloginfo).
  
 
