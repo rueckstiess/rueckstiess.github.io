@@ -37,5 +37,6 @@ serverside.auth_sessions     {"session_endtime": 1, "session_userid": 1}        
 serverside.game_level        {"_id": 1}                                         1         104         104          104         104
 ```
 
-Other sections that `mloginfo` supports are `--distinct`, `--connections`, `--restarts`. 
+Other sections that `mloginfo` supports are `--distinct`, `--connections`, `--restarts`. More information and usage examples are available on the [mtools wiki](https://github.com/rueckstiess/mtools/wiki/mloginfo).
+ 
 
