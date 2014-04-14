@@ -1,3 +1,3 @@
 name: Data Bits and Pieces
-markdown: maruku
+markdown: kramdown
 pygments: true
