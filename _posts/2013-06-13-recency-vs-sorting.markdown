@@ -15,22 +15,22 @@ The two key conditions are therefore
 
     This means that your documents belong to one of a set of distinct values. Imagine news articles that can belong to a category like "Politics", "Technology", "Sports", etc. In this example we won't consider documents with multiple categories (tags), but thanks to MongoDB's multi-key indexes, the same principles can be extended to those cases as well.
 
-    ```javascript
+    ~~~javascript
     var result = db.documents
         .find({category: {"$in": ["Business", "Politics", "Sports"]}})
-    ```
+    ~~~
 
 2.  Recency
 
     We are interested in "the most recent" n documents. This implies some sorting order, ensured by an index on a timestamp-like field (ts) and traditionally a sort and limit on the result set:
 
-    ```javascript
+    ~~~javascript
     var n = 10000;
     var result = db.documents
         .find({category: {"$in": ["Business", "Politics", "Sports"]}})
         .sort({ts:-1})
         .limit(n)
-    ```
+    ~~~
 
 I say "traditionally", because sorting is often used for this kind of problem, and while that certainly guarantees the most recent n documents, this may not be the optimal solution for the problem. It really depends what happens to these documents next. If they need to be processed or presented in an ordered list, then yes, this is really the only solution. It is, however, a stronger requirement than the one we stated in the beginning. There is a significant difference between "most recent n" and "most recent n in sorted order". One that we're going to exploit in this article. Perhaps my task is to batch-process a queue of jobs. I can process 1,000 jobs simultaneously, and the relative order of the jobs doesn't matter, as long as I get the most recent 1,000 jobs in the queue.
 
@@ -63,7 +63,7 @@ Now the documents are sorted globally, so any query can be returned in sorted or
 
 Remember that our initial requirement was less strict than what we attempted with the last two solutions. We didn't ask for sorted results, just for the most recent ones. One way to achieve this is by sorting and limiting. But there's another possibility, that avoids the expensive sort:
 
-```javascript
+~~~javascript
     var total = db.documents.count();
     var k = 10000;
     var results = db.documents
@@ -71,7 +71,7 @@ Remember that our initial requirement was less strict than what we attempted wit
             category: {"\$in": ["Business", "Politics", "Sports"]},
             ts: {"\$gt": total-k}})
         .hint({category: 1, ts: -1})
-```
+~~~
 
 Instead of sorting and limiting the results, we use a second query condition on the `ts` field. Here the timestamp has to be greater than k. Basically, we limit the number of documents before we match the categories, not after, as we did in the previous solutions. We also force the query to use the index on `category` first. How many documents will this query return? 10,000? Most likely not, unless the last 10,000 documents by chance all fall into the correct categories. That's unlikely, and for another find on different categories certainly not the case. Let's call the number of returned documents r, which is most likely not equal to n, the number of documents we wanted. How different r and n are depends on the distribution of documents over the categories, and on our choice of k, the document limit before we filter out the categories. The upside of this query is that it is very fast. Matching the categories is simply a matter of branching into each of the category btree children, and limiting the results means setting a lower bound on the range.
 
@@ -120,7 +120,7 @@ The x-axis is the number of most recent documents n to retrieve, the y-axis show
 
 Here is a javascript function that finds the n most recent documents matching the categories given in query, where n will be between min and max. query needs to be of the form: `{cat: {$in: [1, 55, 88]}}`
 
-```javascript
+~~~javascript
 function findRecent(collection, query, min, max) {
  
     var total = db[collection].count();
@@ -162,11 +162,11 @@ function findRecent(collection, query, min, max) {
         }
     } 
 }
-```
+~~~
 
 And if you want to reproduce these results, I used this little Python script to fill the database (using numbers 0–99 for categories):
 
-```python
+~~~python
 from pymongo import MongoClient, ASCENDING, DESCENDING
 from random import choice
 
@@ -188,4 +188,4 @@ for i in xrange(5000000):
         db.docs.insert(docs, w=0)
         docs = []
 
-```
+~~~

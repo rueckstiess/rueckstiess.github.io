@@ -14,7 +14,7 @@ This overview is very useful to know which indexes to create to get the best per
 
 Below is an example output of a query section:
 
-```
+~~~
 QUERIES
 
 namespace                    pattern                                        count    min (ms)    max (ms)    mean (ms)    sum (ms)
@@ -35,7 +35,7 @@ serverside.user              {"emails.email": 1}                                
 serverside.user              {"_id": 1}                                         2         139         278          208         417
 serverside.auth_sessions     {"session_endtime": 1, "session_userid": 1}        1         244         244          244         244
 serverside.game_level        {"_id": 1}                                         1         104         104          104         104
-```
+~~~
 
 A few comments about the query pattern: Ideally, _mloginfo_ would use exactly the same process of grouping the queries as MongoDB's query optimizer and plan cache does. However, that is a quite complex process, and imitating it would be a lot of work and may still not match in every case. Instead, the query pattern recognizer in mtools takes a simple and predictable approach. It removes all the values and replaces them with a 1 (like indexes are defined). It also reduces `$` operators like `$in`, `$gt`, `$exists` as those are usually handled efficiently with the appropriate index. Operators like `$ne`, `$nin` remain, because they can't be efficiently answered with an index. This does not cover every single case, for example `{$exists: false}` is one of the operators that should probably remain in the pattern, but it works well for most queries.
 

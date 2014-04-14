@@ -75,7 +75,7 @@ The datetime is extracted in two methods: `datetime()` and `_match_datetime_patt
 
 This is the old implementation:
 
-```python
+~~~python
 def _match_datetime_pattern(self, tokens):
     """ Helper method that takes a list of tokens and tries to match the 
         datetime pattern at the beginning of the token list, i.e. the first
@@ -117,7 +117,7 @@ def _match_datetime_pattern(self, tokens):
     dt = datetime(int(year), int(month), int(day), int(h), int(m), int(s), ms)
 
     return dt
-```
+~~~
 
 I won't go through every detail of the new implementation, but basically, the idea is: Find out with a number of quick and inexpensive format checks which of the four versions is the one at hand. Then parse the format appropriately. You may think that detecting the version over and over again for each log file is unnecessary overhead, but currently, there is no real concept of a log file, and each LogLine stands for itself. I also don't want to make any assumptions about consistency across a log file. If the user upgrades from 2.2 to 2.4, or if they decide to run with a different timestamp, the format would change within a file.
 
@@ -127,7 +127,7 @@ I've also decided that it might be useful to store the detected format in the `L
 
 The new `_match_datetime_pattern()` method (the main change) now looks like this:
 
-```python
+~~~python
 def _match_datetime_pattern(self, tokens):
     """ Helper method that takes a list of tokens and tries to match 
         the datetime pattern at the beginning of the token list. 
@@ -172,7 +172,7 @@ def _match_datetime_pattern(self, tokens):
             if '.' in tokens[3] else "ctime-pre2.4"
 
     return dt
-```
+~~~
 
 All changes of the `logline.py` file can be seen in [this commit diff](https://github.com/rueckstiess/mtools/commit/098e358f0787354f274ec1e980fb9cc0a76e5258). As you can see, I had to change some other little details like the offset handling. Once the datetime is found in a log line, it aligns all other pieces of information, like the thread name, the type of operation (if present) etc. With both 4-token and 1-token datetimes, there were some additional changes necessary.
 

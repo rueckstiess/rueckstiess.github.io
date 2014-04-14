@@ -36,11 +36,11 @@ Rather than going through all the features of each of the scripts, I'd just like
 
 Let's say you find that some of your queries against MongoDB take really long, and possibly affect the performance of the database as a whole. To get an idea of where MongoDB spends most of its time, inspecting the "queries" section of _mloginfo_ is a good first step. Here is an example output showing just the "queries" section of _mloginfo_, created with the following command:
 
-```
+~~~
 mloginfo mongod.log --queries
-```
+~~~
 
-```
+~~~
 QUERIES
 
 namespace                    pattern                                        count    min (ms)    max (ms)    mean (ms)    95%-ile (ms)    sum (ms)
@@ -56,7 +56,7 @@ serverside.counters          {"_id": 1, "_types": 1}                            
 serverside.auth_sessions     {"session_key": 1}                                 7         111         684          277           645.6        1940
 serverside.credit_card       {"_id": 1}                                         5         145         764          368           705.0        1840
 serverside.email_alerts      {"_types": 1, "request_code": 1}                   6         143         459          277           415.0        1663
-```
+~~~
 
 Each line shows (from left to right) the namespace, the query pattern, and various statistics of this particular namespace/pattern combination. The rows are sorted by the "sum" column, descending. Sorting by sum is a good way to see where the database spent most of its time. In this example, we see that around half the total time is spent on a `$ne`-type queries on `serverside.scrum_master`, which are known to be inefficent as their excluding nature cannot benefit from an index and many documents have to be scanned. In fact, all of the queries took at least 15 seconds ("min" column). The "count" column also shows that only 20 of the queries were issued, yet these queries contributed to a large amount of the total time spent, more than double the 804 email queries on `serverside.user`. 
 
@@ -66,27 +66,27 @@ When optimizing queries and indexes, starting from the top of this list is a goo
 
 Another way of looking at the performance of queries and other operations is to visualize them graphically. _mplotqueries_' scatter plot (the default) shows the duration of any operation (y-axis) over time (x-axis) and makes it easy to spot long-running operations. The following plot is generated with 
 
-```
+~~~
 mplotqueries mongod.log
-```
+~~~
 and then pressing `L` for "logarithmic" y-axis view:
 
 ![mplotqueries example plot: default]({{ site.url }}/assets/mtools-intro/mplotqueries_example1.png)
 
 While most of the operations are sub-second (below the $10^3$ ms mark), the blue dots immediately stand out, reaching up to the hundreds and thousands of seconds. Clicking on one of the blue dots prints out the relevant log line to stdout:
 
-```
+~~~
 Sat Apr  5 22:29:54 [conn99] command serverside.$cmd command: { getlasterror: 1, w: "majority" } ntoreturn:1 keyUpdates:0 reslen:112 1006370ms
-```
+~~~
 
 The [`getlasterror`][getlasterror] command is used for write concern. In this case, it blocked until the write was replicated to a majority of nodes in the replica set, which took 16 minutes. That is of course an issue, and because this is a command and not a query (or the query part of an update), it didn't show up in the previous use case with `mloginfo --queries`. 
 
 To investigate this further, we can overlay the current plot with an "rsstate" plot, that shows replica set status changes over time. The following two commands create an overlay of the two plots:
 
-```
+~~~
 grep "majority" mongod.log | mplotqueries --overlay
 mplotqueries mongod.log --type rsstate
-```
+~~~
 
 ![mplotqueries example plot: overlay]({{ site.url }}/assets/mtools-intro/mplotqueries_example2.png)
 
@@ -94,9 +94,9 @@ This shows that for each of the blocking "majority" `getlasterror`s, there seem 
 
 From here, the next step would be to look at all the log files of the replica set at that particular time and investigate why the secondaries became unavailable:
 
-```
+~~~
 mlogfilter mongod.log mongod-sec.log mongod-arb.log --from Apr 5 20:15 --to +5min
-```
+~~~
 
 This last command merges the log files of the three replica set members by time, each line prefixed with the filename, slices out a 5-minute window at the first instance of the issue and prints the lines back to stdout. 
 
