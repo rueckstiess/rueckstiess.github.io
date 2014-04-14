@@ -1,6 +1,6 @@
 name: Data Bits and Pieces
 markdown: kramdown
-pygments: true
+pygments: false
 
 kramdown:
   auto_ids: true
