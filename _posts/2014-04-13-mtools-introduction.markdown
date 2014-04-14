@@ -18,7 +18,7 @@ _mtools_ in its current version 1.1.4 consists of 5 individual scripts: _mloginf
 
 * _mloginfo_ should be your first stop on the (potentially) long road of log file analysis. It will parse the file quickly and output general information about its contents, including start and end date and time, line numbers, version (if present in the file) and the type of binary (mongos or mongod). In addition, you can request certain "sections" of additional information; currently those are "queries", "connections", "restarts" and "distinct".
 
-* _mlogfilter_ is all about finding certain events in log files. The script lets you filter on attributes of log messages, like their namespace (database and collection names), their type of operation (queries, inserts, updates, commands, etc.) or by individual connection. You can also search for slow operations above a certain threshold, collection scans (those are the queries not using an index) and other properties. Additional features include slicing the log files by time (from and to with flexible date/time parsing), merging files, shifting them to different time zones or converting timestamp formats, and exporting them to JSON. The key property of _mlogfilter_ is that the output format always remains the same (log lines), so you can pipe the output to another instance of _mlogfilter_, to `grep`or to other scripts like _mplotqueries_. 
+* _mlogfilter_ is all about finding certain events in log files. The script lets you filter on attributes of log messages, like their namespace (database and collection names), their type of operation (queries, inserts, updates, commands, etc.) or by individual connection. You can also search for slow operations above a certain threshold, collection scans (those are the queries not using an index) and other properties. Additional features include slicing the log files by time (from and to with flexible date/time parsing), merging files, shifting them to different time zones or converting timestamp formats, and exporting them to JSON. The key property of _mlogfilter_ is that the output format always remains the same (log lines), so you can pipe the output to another instance of _mlogfilter_, to `grep` or to other scripts like _mplotqueries_. 
 
 * _mplotqueries_ then takes a log file (_mlogfilter_ed or not) and presents the information visually in various ways. A number of different types of graphs are implemented, like scatter plots (showing all operations over time vs. their duration), histograms, event and range plots, and other more specialized graphs like connection churn or replica set changes. Independent of the type of graph, a grouping can be specified to assign different colors to different categories. 
 
@@ -58,13 +58,13 @@ serverside.credit_card       {"_id": 1}                                         
 serverside.email_alerts      {"_types": 1, "request_code": 1}                   6         143         459          277           415.0        1663
 ```
 
-Each line shows (from left to right) the namespace, the query pattern, and various statistics of this particular namespace/pattern combination. The rows are sorted by the "sum" column, descending. Sorting by sum is a good way to see where the database spent most of its time. In this example, we see that around half the total time is spent on a `$ne`-type query on `serverside.scrum_master`, which are known to be inefficent as their excluding nature cannot make use of an index and many documents have to be scanned. In fact, all of the queries took at least 15 seconds ("min" column). The "count" column also shows that only 20 of the queries were issued, yet these queries contributed to a large amount of the total time spent, more than double the 804 email queries on `serverside.user`. 
+Each line shows (from left to right) the namespace, the query pattern, and various statistics of this particular namespace/pattern combination. The rows are sorted by the "sum" column, descending. Sorting by sum is a good way to see where the database spent most of its time. In this example, we see that around half the total time is spent on a `$ne`-type queries on `serverside.scrum_master`, which are known to be inefficent as their excluding nature cannot benefit from an index and many documents have to be scanned. In fact, all of the queries took at least 15 seconds ("min" column). The "count" column also shows that only 20 of the queries were issued, yet these queries contributed to a large amount of the total time spent, more than double the 804 email queries on `serverside.user`. 
 
 When optimizing queries and indexes, starting from the top of this list is a good idea as these optimizations will result in the highest gains in terms of performance.
 
 #### Use Case 2: Visualizing Log Files with _mplotqueries_
 
-Another way of looking at the performance of queries and other operations is to visualize them graphically. _mplotqueries_' "scatter plot" (the default) shows the duration of any operation (y-axis) over time (x-axis) and makes it easy to spot long-running operations. The following plot is generated with 
+Another way of looking at the performance of queries and other operations is to visualize them graphically. _mplotqueries_' scatter plot (the default) shows the duration of any operation (y-axis) over time (x-axis) and makes it easy to spot long-running operations. The following plot is generated with 
 
 ```
 mplotqueries mongod.log
@@ -90,21 +90,26 @@ mplotqueries mongod.log --type rsstate
 
 ![mplotqueries example plot: overlay]({{ site.url }}/assets/mtools-intro/mplotqueries_example2.png)
 
-This shows that for each of these blocking "majority" `getlasterror`s, there seem to be some issues with replica set members being unavailable. From here, the next step would be to jump into all the log files of the replica set at that particular time and investigate why the secondaries became unavailable:
+This shows that for each of the blocking "majority" `getlasterror`s, there seem to be some issues with replica set members being unavailable. The red vertical lines represent a node being `DOWN`, preceeding the yellow lines for a node being in `SECONDARY` state again, at which point the `getlasterror` commands finally succeed.
+
+From here, the next step would be to look at all the log files of the replica set at that particular time and investigate why the secondaries became unavailable:
 
 ```
 mlogfilter mongod.log mongod-sec.log mongod-arb.log --from Apr 5 20:15 --to +5min
 ```
 
-This last command merges the log files of the three replica set members by time, each line prefixed with the filename, slices out a 5-minute window at the first instance of the issue and prints the lines back to stdout.
+This last command merges the log files of the three replica set members by time, each line prefixed with the filename, slices out a 5-minute window at the first instance of the issue and prints the lines back to stdout. 
+
+We'll end this example here, but I hope this demonstrates the idea how _mtools_ can be used interactively for a root cause analysis. You look at the available data in various different ways, form a hypothesis, filter out noise (i.e. irrelevant log lines) and dig deeper.
 
 
 ### Where Can I Learn More?
 
-These were just two simple examples of how _mtools_ can be used to diagnose MongoDB issues from the log files. The various _mtools_ scripts contain many more features and the best way to learn about them is to download and install _mtools_ and follow some of the examples on the [mtools wiki][wiki] page. _mtools_ is open source and available for download on [github][github]. It is also in the PyPi package index and can be installed via `pip`. Finally, for any questions, bug reports or feature requests, simply go to the [mtools github issues][issues] page and open a new issue. 
+These were just two simple examples of how _mtools_ can be used to diagnose MongoDB issues from log files. All scripts contain many more features and the best way to learn about them is to [download and install][install] _mtools_ and follow some of the examples on the [mtools wiki][wiki] page. _mtools_ is open source and available for download on [github][github]. It is also in the PyPi package index and can be installed via `pip`. Finally, for any questions, bug reports or feature requests, simply go to the [mtools github issues][issues] page and open a new issue. 
 
 
-[d3]: http://d3js.org/
+[d3]: http://d3js.org
+[install]: https://github.com/rueckstiess/mtools/blob/master/INSTALL.md
 [github]: https://github.com/rueckstiess/mtools
 [wiki]: https://github.com/rueckstiess/mtools/wiki
 [issues]: https://github.com/rueckstiess/mtools/issues
