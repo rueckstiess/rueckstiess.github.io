@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Juggling Lesson 1 &mdash; Basic Throw / Catch"
-date: 2014-04-13 15:44:02
 categories: juggling
 ---
 
@@ -31,7 +30,7 @@ Then repeat: throw, catch, re-throw.
 
 Here is the algorithm in Java code: 
 
-~~~java
+~~~ java
 void juggle1() {
     while (true) {
         try {
