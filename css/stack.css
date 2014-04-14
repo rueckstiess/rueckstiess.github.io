@@ -21,6 +21,14 @@ h1 {
     margin:0.67em 0
 }
 
+h1.title {
+    margin-bottom:0px;
+}
+
+h4.title {
+    margin-top: 5px;
+}
+
 /*abbr[title]{border-bottom:1px dotted}*/
 
 b,strong { 
@@ -72,6 +80,11 @@ sub {
 
 img {
     border:0
+}
+
+.post img {
+  width: 80%;
+  margin-left: 8%;
 }
 
 svg:not(:root) {
@@ -1351,3 +1364,4 @@ kbd{padding:0.1em 0.6em;border:1px solid rgba(0,0,0,0.25);-webkit-box-shadow:0 1
 .icon-provider-gplus{background-position:-144px 0}
 body.rtl #wmd-input,body.rtl #preview-contents,body.rtl .input-file-title,body.rtl .search-bar input,body.rtl .modal-document-manager input,body.rtl .container{direction:rtl}
 body.pdf{font-family:"DejaVu Sans"}body.pdf code,body.pdf pre{font-family:"DejaVu Sans Mono"}
+
