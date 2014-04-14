@@ -63,15 +63,15 @@ Now the documents are sorted globally, so any query can be returned in sorted or
 
 Remember that our initial requirement was less strict than what we attempted with the last two solutions. We didn't ask for sorted results, just for the most recent ones. One way to achieve this is by sorting and limiting. But there's another possibility, that avoids the expensive sort:
 
-~~~ javascript
+{% highlight javascript %}
 var total = db.documents.count();
 var k = 10000;
 var results = db.documents
     .find({
-        category: {"\$in": ["Business", "Politics", "Sports"]},
-        ts: {"\$gt": total-k}})
+        category: {"$in": ["Business", "Politics", "Sports"]},
+        ts: {"$gt": total-k}})
     .hint({category: 1, ts: -1})
-~~~
+{% endhighlight %}
 
 Instead of sorting and limiting the results, we use a second query condition on the `ts` field. Here the timestamp has to be greater than k. Basically, we limit the number of documents before we match the categories, not after, as we did in the previous solutions. We also force the query to use the index on `category` first. How many documents will this query return? 10,000? Most likely not, unless the last 10,000 documents by chance all fall into the correct categories. That's unlikely, and for another find on different categories certainly not the case. Let's call the number of returned documents r, which is most likely not equal to n, the number of documents we wanted. How different r and n are depends on the distribution of documents over the categories, and on our choice of k, the document limit before we filter out the categories. The upside of this query is that it is very fast. Matching the categories is simply a matter of branching into each of the category btree children, and limiting the results means setting a lower bound on the range.
 
