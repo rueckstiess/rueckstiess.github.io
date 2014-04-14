@@ -7,7 +7,7 @@ categories: mtools
 
 _mtools_ is a collection of helper scripts, implemented in Python, to parse and filter MongoDB log files (both for mongod and mongos), to visualize information from log files and to quickly set up complex MongoDB test environments on a local machine.
 
-I've started working on _mtools_ about one year ago, when I realized that many of the daily tasks around log files I do as an Engineer at MongoDB can be automated and scripted. Since then, _mtools_ has grown to a suite of flexible, useful command line tools that are being used by many of our Engineers internally, as well as MongoDB customers and users.
+I've started working on _mtools_ about one year ago, when I realized that many of the daily tasks around log files I do as an Engineer at [MongoDB][mongodb] can be automated and scripted. Since then, _mtools_ has grown to a suite of flexible, useful command line tools that are being used by many of our Engineers internally, as well as MongoDB customers and users.
 
 If you find yourself looking at MongoDB log files frequently, then I encourage you to try _mtools_ as well.
 
@@ -109,6 +109,7 @@ These were just two simple examples of how _mtools_ can be used to diagnose Mong
 
 
 [d3]: http://d3js.org
+[mongodb]: http://www.mongodb.com
 [install]: https://github.com/rueckstiess/mtools/blob/master/INSTALL.md
 [github]: https://github.com/rueckstiess/mtools
 [wiki]: https://github.com/rueckstiess/mtools/wiki
