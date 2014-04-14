@@ -21,7 +21,7 @@ In today's exercise, instead of throwing an exception, you will instead learn ho
 
 Now for the interesting part:
 
-1. Take a ball in your left hand and throw it so it just touches point R and then drops into your right hand[^1], as shown in pictures a) and b)
+1. Take a ball in your left hand and throw it so it just touches point R and then drops into your right hand, as shown in pictures a) and b)
 2. Throw the ball back so it just touches point L and falls into your left hand again, as in c) and d)
 
 Then repeat: throw, catch, re-throw. 
@@ -57,7 +57,4 @@ Some gotchas:
 * Don't reach for the ball. It has to fall into your hand exactly where the hand is.
 
 Practice for 15 minutes total a day and make sure your trajectories are always exactly the same. No exceptions.
-
-
-[^1]: it has been pointed out to me that this is physically impossible and that the ball would always follow a parabolic trajectory. This is, of course, completely irrelevant as this is a Juggling class and not a Physics class. Believe me, it will work. 
 
