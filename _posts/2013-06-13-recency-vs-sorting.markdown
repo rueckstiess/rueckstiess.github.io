@@ -15,7 +15,7 @@ The two key conditions are therefore
 
     This means that your documents belong to one of a set of distinct values. Imagine news articles that can belong to a category like "Politics", "Technology", "Sports", etc. In this example we won't consider documents with multiple categories (tags), but thanks to MongoDB's multi-key indexes, the same principles can be extended to those cases as well.
 
-    ~~~javascript
+    ~~~ javascript
     var result = db.documents
         .find({category: {"$in": ["Business", "Politics", "Sports"]}})
     ~~~
@@ -24,7 +24,7 @@ The two key conditions are therefore
 
     We are interested in "the most recent" n documents. This implies some sorting order, ensured by an index on a timestamp-like field (ts) and traditionally a sort and limit on the result set:
 
-    ~~~javascript
+    ~~~ javascript
     var n = 10000;
     var result = db.documents
         .find({category: {"$in": ["Business", "Politics", "Sports"]}})
@@ -63,7 +63,7 @@ Now the documents are sorted globally, so any query can be returned in sorted or
 
 Remember that our initial requirement was less strict than what we attempted with the last two solutions. We didn't ask for sorted results, just for the most recent ones. One way to achieve this is by sorting and limiting. But there's another possibility, that avoids the expensive sort:
 
-~~~javascript
+~~~ javascript
     var total = db.documents.count();
     var k = 10000;
     var results = db.documents
@@ -120,7 +120,7 @@ The x-axis is the number of most recent documents n to retrieve, the y-axis show
 
 Here is a javascript function that finds the n most recent documents matching the categories given in query, where n will be between min and max. query needs to be of the form: `{cat: {$in: [1, 55, 88]}}`
 
-~~~javascript
+~~~ javascript
 function findRecent(collection, query, min, max) {
  
     var total = db[collection].count();
@@ -166,7 +166,7 @@ function findRecent(collection, query, min, max) {
 
 And if you want to reproduce these results, I used this little Python script to fill the database (using numbers 0–99 for categories):
 
-~~~python
+~~~ python
 from pymongo import MongoClient, ASCENDING, DESCENDING
 from random import choice
 
