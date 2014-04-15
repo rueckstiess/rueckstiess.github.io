@@ -68,8 +68,8 @@ var total = db.documents.count();
 var k = 10000;
 var results = db.documents
     .find({
-        category: {"\$in": ["Business", "Politics", "Sports"]},
-        ts: {"\$gt": total-k}})
+        category: {"$in": ["Business", "Politics", "Sports"]},
+        ts: {"$gt": total-k}})
     .hint({category: 1, ts: -1})
 ~~~
 
