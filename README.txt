@@ -5,4 +5,4 @@ start jekyll with
     jekyll server --watch
 
 
-Content is served on 0.0.0.0:4000.
+Content is served on localhost:4000.
