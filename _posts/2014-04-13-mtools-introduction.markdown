@@ -3,6 +3,7 @@ layout: post
 title: "Introduction to mtools"
 date: 2014-04-13 15:44:02
 categories: mtools
+tags: [mtools, intro] 
 ---
 
 _mtools_ is a collection of helper scripts, implemented in Python, to parse and filter MongoDB log files (both for mongod and mongos), to visualize information from log files and to quickly set up complex MongoDB test environments on a local machine.

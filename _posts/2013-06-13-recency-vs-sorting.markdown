@@ -3,6 +3,7 @@ layout: post
 title: "Categorical Queries and Recency vs. Sorting in MongoDB"
 date: 2013-06-13 14:51:20
 categories: mongodb
+tags: [mongodb, query, index]
 ---
 
 ### Introduction

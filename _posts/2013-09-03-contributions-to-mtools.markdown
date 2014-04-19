@@ -2,7 +2,8 @@
 layout: post
 title: "Contributions to mtools"
 date: 2013-09-03 00:12:02
-categories: mtools contribute
+categories: mtools
+tags: [mtools, contribute]
 ---
 
 [mtools][mtools] is a project I've been working on for some time now. It is a collection of command line scripts to parse, filter and visualize [MongoDB](http://www.mongodb.org/) log files, as well as spin up MongoDB test environments for issue reproduction and local testing. It's an open source project, available on [github][mtools] and I invite everyone to submit [feature requests, bug reports][mtools-issues], and [code contributions](https://github.com/rueckstiess/mtools/blob/master/tutorials/contributing.md).
