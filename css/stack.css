@@ -142,6 +142,16 @@ div.footnotes {
     font-size: 80%;
 }
 
+#disqus_wrapper {
+    margin-top: 50px;
+}
+
+#disqus_wrapper h3 {
+    color: #ddd;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
 button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
 button,input{line-height:normal}
 button,select{text-transform:none}
