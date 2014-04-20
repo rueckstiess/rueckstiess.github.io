@@ -18,7 +18,7 @@ a:active,a:hover {
 
 h1 { 
     font-size:2em;
-    margin:0.67em 0
+    margin:0.5em 0
 }
 
 h1.title {
@@ -27,6 +27,7 @@ h1.title {
 
 h4.title {
     margin-top: 5px;
+    margin-bottom: 10px;
 }
 
 /*abbr[title]{border-bottom:1px dotted}*/
@@ -112,6 +113,12 @@ legend{border:0;padding:0}
   overflow: hidden;
 }
 
+.footer img {
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+}
+
 .footer .contact {
   float: left;
   margin-right: 3em;
@@ -130,6 +137,11 @@ legend{border:0;padding:0}
 
 }
 
+.posts .date {
+    font-size: 0.6em;
+    color: #ccc;
+}
+
 .footnote {
     font-weight: bold;
 }
@@ -144,6 +156,7 @@ div.footnotes {
 .footnotes {
     font-size: 80%;
 }
+
 
 #disqus_wrapper {
     margin-top: 50px;
@@ -200,7 +213,7 @@ h4,h5,h6{margin-top:10px;margin-bottom:10px}
 h1,.h1{font-size:36px}
 h2,.h2{font-size:30px}
 h3,.h3{font-size:24px}
-h4,.h4{font-size:18px}
+h4,.h4{font-size:20px}
 h5,.h5{font-size:14px}
 h6,.h6{font-size:12px}
 h1 small,.h1 small{font-size:24px}
@@ -1398,4 +1411,15 @@ body.pdf{font-family:"DejaVu Sans"}body.pdf code,body.pdf pre{font-family:"DejaV
     h2 { font-size:24px; }
     h3 { font-size:20px; }
     h4 { font-size:15px; }
+
+    h1.title { margin-top: 30px; }
+
+    .footer .contact {
+        float: left;
+        margin-right: 0.95em;
+    }
+
+    .posts {
+      font-size: 1em;
+    }
 }
