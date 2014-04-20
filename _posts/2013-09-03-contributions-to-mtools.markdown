@@ -31,7 +31,7 @@ iso8601-utc
 iso8601-local
 : This format uses the ISO-8601 standard and logs in the machine's local timezone, example: `1969-12-31T19:00:00.000+0500`
 
-### Getting a Development Version of mtools</span>
+### Getting a Development Version of mtools
 
 To start development with *mtools*, you need a development version. First, [fork the mtools repository](https://github.com/rueckstiess/mtools/fork) into your own github account (we'll use the placeholder `<username>` for this example, please replace it with your own github username). Then clone a copy to your local machine:
 
@@ -53,7 +53,7 @@ You have two remote branches now: `origin` (pointing to your fork of mtools on g
     git checkout -b develop origin/develop
 
 
-### Setting Up a Feature/Bugfix Branch {#bugfix-branch}
+### <a name="bugfix-branch"></a> Setting Up a Feature/Bugfix Branch
 
 All the steps up until now only have to be executed once. The next set of instructions applies to each individual code change / pull request that you want to do in the future.
 

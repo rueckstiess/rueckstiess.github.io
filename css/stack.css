@@ -22,7 +22,7 @@ h1 {
 }
 
 h1.title {
-    margin-bottom:0px;
+    margin-bottom:10px;
 }
 
 h4.title {
@@ -118,13 +118,16 @@ legend{border:0;padding:0}
 }
 
 .posts {
-  list-style-type: none;
+  list-style-type: circle;
+  color: #ddd;
   margin-bottom: 2em;
   font-size: 1.2em;
 }
 
 .posts li {
-  line-height: 1.75em;
+  line-height: 1.25em;
+  padding-bottom: 0.75em;
+
 }
 
 .footnote {
@@ -1389,3 +1392,10 @@ kbd{padding:0.1em 0.6em;border:1px solid rgba(0,0,0,0.25);-webkit-box-shadow:0 1
 body.rtl #wmd-input,body.rtl #preview-contents,body.rtl .input-file-title,body.rtl .search-bar input,body.rtl .modal-document-manager input,body.rtl .container{direction:rtl}
 body.pdf{font-family:"DejaVu Sans"}body.pdf code,body.pdf pre{font-family:"DejaVu Sans Mono"}
 
+
+@media screen and (max-width:640px) {
+    h1 { font-size:30px; }
+    h2 { font-size:24px; }
+    h3 { font-size:20px; }
+    h4 { font-size:15px; }
+}
