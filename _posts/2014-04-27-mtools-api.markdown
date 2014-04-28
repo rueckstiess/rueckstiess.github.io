@@ -4,7 +4,7 @@ title: mtools Python API
 categories: mtools
 ---
 
-A less known fact about _mtools_ is that in addition to the command line scripts, _mtools_ also offers a Python API with many of the basic elements of log line parsing that can be called from your own Python scripts. The classes are not publicly documented yet so the term "API" might be a little strong, but they have been around for a few releases now and could be useful if the scripts in _mtools_ aren't exactly what you are looking for, but you don't want to start from scratch. 
+A less known fact about [_mtools_][mtools] is that in addition to the command line scripts, _mtools_ also offers a Python API with many of the basic elements of log line parsing that can be called from your own Python scripts. The classes are not publicly documented yet so the term "API" might be a little strong, but they have been around for a few releases now and could be useful if the scripts in _mtools_ aren't exactly what you are looking for, but you don't want to start from scratch. 
 
 In this article I'm going to explain two very useful classes when working with MongoDB log files: The `LogFile` and `LogEvent` classes. Follow-up posts will cover some other classes that _mtools_ uses internally and might be useful for your own scripts.
 
@@ -95,5 +95,4 @@ datetime.datetime(2014, 4, 6, 6, 26, 41, tzinfo=tzutc())
 The class supports a lot more of these properties, for example "n-counters", like `nscanned`, `nreturned`, etc. where they apply. Finally, `LogEvent` also has the ability to output the results as a Python dictionary or in JSON format, with the `.to_dict()` and `.to_json()` methods.
 
 
-
-
+[mtools]: https://github.com/rueckstiess/mtools
