@@ -1,0 +1,71 @@
+==================================================================
+https://keybase.io/tomonezero
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://blog.rueckstiess.com
+  * I am tomonezero (https://keybase.io/tomonezero) on keybase.
+  * I have a public key with fingerprint 6F50 5374 7A87 2B54 6C32  6DC3 8DD2 1CF0 E6CA EE3B
+
+To claim this, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "fingerprint": "6f5053747a872b546c326dc38dd21cf0e6caee3b",
+            "host": "keybase.io",
+            "key_id": "8dd21cf0e6caee3b",
+            "uid": "15b8aba2e0085149af682f1bbbb65e00",
+            "username": "tomonezero"
+        },
+        "service": {
+            "hostname": "blog.rueckstiess.com",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1398781196,
+    "expire_in": 157680000,
+    "prev": "b2f70a034671ed3da167037a323c52fd6a3a6ee2939e4992fde5bc86d65f40b9",
+    "seqno": 6,
+    "tag": "signature"
+}
+
+with the aforementioned key, yielding the PGP signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v0.1.12
+Comment: https://keybase.io/crypto
+
+yMMFAnicbZF/TBNnHMZbGV0s4Jq4YIRtGcdGBBF6d723d8UMMhQaIv6YzMyNWe/H
+e+0NuCt31wJ2bBFFhClsqGAAfwAaRzZ1EWHD1QwYoARmcE7RjBkixI2AxrKEQTTD
+K3H/7fvP5X3ez/M8b+7bFxGiM+qd/S3nIqKLQvRD3U89uu2OjnAfwkhcCWLzIXlw
+6cMLohPKblkQVcSGAJ4wE7jVYqVJK8YQFsDiGOBYnOQ4DGV5MwQsDSHOIImIS1KC
+Di2GoRWYJEiaph0cAqep/8N7li5QgiFphsag2UwSqIWieUBiPMpoAwhNDIIKlEW6
+AGq0KhVIItwDZQkpTUQ03Suwmu5bKn/BMPmSM0n2QDZPUQWoKEmsVKCluGVJlVgp
+XyNcquq2BQPUEnfQUQQZx4ssByOInPYHNIMXyoogiYgN1UhWFYLhKE6RVhJFKZCI
+wGK3IEOHECQIKyDN2gRroDf4CIy3mmkzbgFWFHI4R6PAasatNI7hLIHxHKBxGkCI
+UTgFLRSlKZBgWBJwgOAtZobS+hVYKEqITWtSaacWqQhOkVY9MkRKe3tyX9LpjTpD
+6LLgDnXG5ab/NuvCTLq2TkdFZKpj98CynDe9t9auj/dUOx1p4JP9GY9qx3P2eu7x
+ySummLbzrvKfzi5OfBwViJV3GaY7M//Iamjv+mLL9wn7+hu7JzzN6ceOgui72Yxh
+0201MO28Al6ZN/HFmUWr/j6fMFfnOpfe17CKEw9vfs9wJ7Wx+YeIv0b8NSn9x/dH
+Vo+XBXpK2tE1zTZj4ZENpbaRxbBdU8nh9jXL7aMfJLf2MTODYlzm9c63K7JiED1G
+PGoLi62ZfX3PYffFsS73zTJ4a9uDhapcRw8eQgkPvzupjz0YNs3M3Xjam3m5vHe9
+v/e3U2qd2LDTMJlxr9Lnbbc1ZQz7fl1Mv5mdwkWahnLHfm/f2PGnn8BB+DuYMfTx
+wt2c476GSx8SXmrKzo2n+V/LmTmBt452vCuN/RvTnabrma2rejlytjm6uDgrbePw
+iW9OpQ6aJr8cCYSsrb9GX73/fsxJSv3sl+GInUPrApMrd2y2X/i0Aub+89AwcRqU
+LHy9Ohtk3GktfMYhon9r/OWo+9/GYVmj5YpKDlw0ZRfWPJOeXCtPmNcHHmz3X52Y
++ar/St7tbW+VXZ/ftLrnqGHHma7xrcWDK2crO4d/rorzh0bNPY5+Y8uT6vojCeEH
+Pt/gPDgkcYl743enrLhwo7bx7IF17LHTh/J/rLQ3hfNTZ17t+qiltilmoOXQJWLa
+Vb/vOV9Plr0=
+=3F7K
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/tomonezero
+
+==================================================================
