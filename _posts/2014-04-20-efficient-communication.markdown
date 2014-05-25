@@ -6,9 +6,9 @@ categories: life-hacking
 ---
 This article should probably start with a warning that it is **not** a great example of efficient written communication and instead more of a rambling that may or may not lead to anything coherent at the end.
 
-I send and receive a lot of emails every day at work, and in addition, our entire company communicates via a instant messaging system with each other. The effect of this is that a lot of my daily communication is in writing.
+I send and receive a lot of emails every day at work, and in addition, our entire company communicates via a instant messaging system. The effect of this is that a lot of my daily communication is in writing.
 
-I've noticed that individual people use very different styles. My previous boss always adhered to what I would describe as formal email etiquette. Every email started with "Hi Thomas," and it ended with "Thanks", "Regards", "Cheers", etc and my bosses name. The grammar, spelling and punctuation was always immaculate. The subject line was a well-thought-out summary of the email's content. This is the way I prefer writing emails; with perfection.
+I've noticed that individual people use very different styles. My previous boss always adhered to what I would describe as formal email etiquette. Every email started with "Hi Thomas," and it ended with "Thanks", "Regards", "Cheers", etc and my boss' name. The grammar, spelling and punctuation was always immaculate. The subject line was a well-thought-out summary of the email's content. This is the way I prefer writing emails; with perfection.
 
 My current boss' emails are very different: An entire email could consist of 2 words (one for the subject, one for the content). The text is usually all lower-case. There is no greeting, no sign-off, he uses non-words like "asap", "tmrw", "y" (the last one is short for "yes"). I'd describe his style with maximizing the content/letter ratio.
 
