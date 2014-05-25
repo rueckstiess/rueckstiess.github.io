@@ -32,19 +32,26 @@ Here is the algorithm in Java code:
 
 ~~~ java
 void juggle1() {
+    Hand leftHand = new Hand("left");
+    Hand rightHand = new Hand("right");
+    
+    JugglingBall ball = new JugglingBall();
+
     while (true) {
         try {
-            throwBallLeft();
+            if ( !leftHand.isEmpty() ) 
+                throw ball;
         }
         catch (JugglingBall b) {
-            closeHandRight();
+            rightHand.close(b);
         }
 
         try {
-            throwBallRight();
+            if ( !rightHand.isEmpty() )
+                throw ball;
         }
         catch (JugglingBall b) {
-            closeHandLeft();
+            leftHand.close(b);
         }
     }
 }
