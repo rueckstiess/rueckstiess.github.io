@@ -76,7 +76,7 @@ mplotqueries has received the ability to change some of the properties of the gr
 
 ### Changes in mlaunch
 
-mlaunch's changes are mostly some bug fixes. The `list` command no longer errors when stumbling across `mongod` instances not created with mlaunch. Shard names did not work correctly when using single stand-alone nodes as shards. And users with an older pymongo version (< 2.5) would see errors when using authentication. There's now a fallback to add a legacy root user in that case.
+mlaunch's changes consist for the most part of bug fixes. The `list` command no longer errors when stumbling across `mongod` instances not created with mlaunch. Shard names did not work correctly when using single stand-alone nodes as shards. And users with an older pymongo version (< 2.5) would see errors when using authentication. There's now a fallback to add a legacy root user in that case.
 
 
 ### Changes in mlogvis
