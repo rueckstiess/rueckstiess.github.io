@@ -86,7 +86,7 @@ Finally, mlogvis gained two new command line options: `--no-browser` creates the
 
 ### Upgrade
 
-To upgrade, run `sudo pip install mtools --upgrade` on your machine. If you run a development version of mtools, `git pull` the latest changes from the `rueckstiess/mtools` directory, then switch to the master branch and run `python setup.py develop`. 
+To upgrade, run `sudo pip install mtools --upgrade` on your machine. If you run a development version of mtools, `git pull` the latest changes from the `rueckstiess/mtools` repository, then switch to the master branch and run `python setup.py develop`. 
 
 
 ### Contributors
