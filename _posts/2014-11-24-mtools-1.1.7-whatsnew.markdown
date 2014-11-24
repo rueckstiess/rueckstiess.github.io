@@ -8,7 +8,7 @@ tags: [mtools, release]
 
 Here's a quick summary of the latest changes introduced in _mtools 1.1.7_.
 
-#### General Log Parsing
+### General Log Parsing
 
 Version 1.1.7 includes support for MongoDB 2.8, in particular the log format. Log lines in 2.8 now contain a "Severity" and "Component" field after the timestamp. These are parsed out in [mtools/util/logevent.py](https://github.com/rueckstiess/mtools/blob/master/mtools/util/logevent.py#L593) and made available to the other tools via the `.component` and `.level` properties. 
 
@@ -17,7 +17,7 @@ Additionally, operations of type `command` are now further parsed for the specif
 As a reminder: mtools can be used through the Python API. Parsing a log file and accessing any of the fields for each log line can be done very easily in a few lines of Python. I wrote about the API [in this article](http://blog.rueckstiess.com/mtools/2014/04/27/mtools-api.html).
 
 
-#### Changes in mlogfilter
+### Changes in mlogfilter
 
 The above new fields are passed down to _mlogfilter_ and log files can now be filtered on `--component`, `--loglevel`, and `--command`. Another change: most filters can now accept multiple values. Finding all queries and updates in a log file can now be done like so:
 
@@ -26,7 +26,7 @@ mlogfilter mongod.log --operation query update
 ```
 
 
-#### Changes in mloginfo
+### Changes in mloginfo
 
 With the addition of the `command` property, mloginfo gained the ability to also include `count` and `findAndModify` operations in the [Query Section](https://github.com/rueckstiess/mtools/wiki/mloginfo#queries-section) (`--queries`). To keep track of the different types of operations, the Query Section also has a new column `operation`, that indicates if the operation for this row was from a `query`, `update`, `count`, etc. The new output format looks like this: 
 
@@ -69,27 +69,27 @@ RSINFO
 Together with the already existing (as of version 1.1.6) `--rsstate` section, mloginfo is now quite useful to diagnose replica set issues, giving you access to all replica set changes and the current config. The two sections might merge eventually, but for now, they remain separate.
 
 
-#### Changes in mplotqueries
+### Changes in mplotqueries
 
 mplotqueries has received the ability to change some of the properties of the graphical elements in scatter plots. With keyboard shortcuts `[` and `]` one can now change the opacity of the data markers (use `{` and `}`  for fine-grained changes). This is useful in certain cases where too many markers of one type cover up all others. Changing the opacity lets you explore the data in more detail. For presentation purposes, you can also change the size of the markers with `<` and `>`, and toggle marker edges with `e`. 
 
 
-#### Changes in mlaunch
+### Changes in mlaunch
 
 mlaunch's changes are mostly some bug fixes. The `list` command no longer errors when stumbling across `mongod` instances not created with mlaunch. Shard names did not work correctly when using single stand-alone nodes as shards. And users with an older pymongo version (< 2.5) would see errors when using authentication. There's now a fallback to add a legacy root user in that case.
 
 
-#### Changes in mlogvis
+### Changes in mlogvis
 
 Finally, mlogvis gained two new command line options: `--no-browser` creates the `.html` file, but suppress display of the page in the browser. Additionally, a custom output filename can be specified with `--out`. 
 
 
-#### Upgrade
+### Upgrade
 
 To upgrade, run `sudo pip install mtools --upgrade` on your machine. If you run a development version of mtools, `git pull` the latest changes from the `rueckstiess/mtools` directory, then switch to the master branch and run `python setup.py develop`. 
 
 
-#### Contributors
+### Contributors
 
 Thanks to everyone who reported bugs, new feature requests, and especially to those who submitted pull requests. This is of great help, so please keep contributing to mtools. If you'd like to start contributing, too, have a read of [this page](https://github.com/rueckstiess/mtools/blob/master/tutorials/contributing.md) and if you have any questions, just open an issue [here](https://github.com/rueckstiess/mtools/issues). 
 
