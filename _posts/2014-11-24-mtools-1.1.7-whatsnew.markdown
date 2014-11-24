@@ -28,7 +28,7 @@ mlogfilter mongod.log --operation query update
 
 ### Changes in mloginfo
 
-With the addition of the `command` property, mloginfo gained the ability to also include `count` and `findAndModify` operations in the [Query Section](https://github.com/rueckstiess/mtools/wiki/mloginfo#queries-section) (`--queries`). To keep track of the different types of operations, the Query Section also has a new column `operation`, that indicates if the operations for this row were `queries`, `updates`, `counts`, etc. The new output format looks like this: 
+With the addition of the `command` property, mloginfo gained the ability to also include `count` and `findAndModify` operations in the [Query Section](https://github.com/rueckstiess/mtools/wiki/mloginfo#queries-section) (`--queries`). To keep track of the different types of operations, the Query Section also has a new column `operation`, that indicates if the operation for this row was from a `query`, `update`, `count`, etc. The new output format looks like this: 
 
 ```
 QUERIES
