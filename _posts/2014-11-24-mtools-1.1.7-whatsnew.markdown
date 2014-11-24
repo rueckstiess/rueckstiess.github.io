@@ -10,7 +10,7 @@ Here's a quick summary of the latest changes introduced in _mtools 1.1.7_.
 
 ### General Log Parsing
 
-Version 1.1.7 includes support for MongoDB 2.8, in particular the log format. Log lines in 2.8 now contain a "Severity" and "Component" field after the timestamp. These are parsed out in [mtools/util/logevent.py](https://github.com/rueckstiess/mtools/blob/master/mtools/util/logevent.py#L593) and made available to the other tools via the `.component` and `.level` properties. The `planSummary` information has been in the logs since 2.6, now mtools also extracts it.
+Version 1.1.7 includes support for MongoDB 2.8, in particular the new log format. Log lines in 2.8 now contain a "Severity" and "Component" field after the timestamp. These are parsed out in [mtools/util/logevent.py](https://github.com/rueckstiess/mtools/blob/master/mtools/util/logevent.py#L593) and made available to the other tools via the `.component` and `.level` properties. The `planSummary` information has been in the logs since 2.6, now mtools also extracts it.
 
 Additionally, operations of type `command` are now further parsed for the specific type of command (like `count`, `findAndModify`, ...). This information is accessible via the `.command` property. Non-command operations always return `None` here.
 
