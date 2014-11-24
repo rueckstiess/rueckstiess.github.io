@@ -57,7 +57,16 @@ magenta.apple           query        {"session_endtime": 1, "session_userid": 1}
 magenta.star.fruit      update       {"_id": 1}                                         1         104         104          104           104.0    104
 ```
 
-mloginfo also received a new section, which can be activated with `--rsinfo`. This section prints information about the last known replica set configuration (name, members, etc). Together with the already existing (as of version 1.1.6) `--rsstate` section, mloginfo is now quite useful to diagnose replica set issues, giving you access to all replica set changes and the current config. The two sections might merge eventually, but for now, they remain separate.
+mloginfo also received a new section, which can be activated with `--rsinfo`. This section prints information about the last known replica set configuration (name, members, etc). Here is an example output: 
+
+```
+RSINFO
+    rs name: replset
+ rs members: [ { _id: 0, host: "enter.local:27017" }, { _id: 1, host: "enter.local:27018" }, { _id: 2, host: "enter.local:27019" } ]
+ rs version: 1
+```
+
+Together with the already existing (as of version 1.1.6) `--rsstate` section, mloginfo is now quite useful to diagnose replica set issues, giving you access to all replica set changes and the current config. The two sections might merge eventually, but for now, they remain separate.
 
 
 ### Changes in mplotqueries
